@@ -15,6 +15,6 @@ void  init_mlx(t_data *fractol)
 {
   fractol->mlx = mlx_init();
   fractol->window = mlx_new_window(fractol->mlx, SIZE, SIZE, "fract-ol");
-  fractol->image = mlx_new_window(fractol->mlx, SIZE, SIZE);
+  fractol->image = mlx_new_iamge(fractol->mlx, SIZE, SIZE);
   fractol->addr = mlx_get_data_addr(fractol->image, &fractol->bits_per_pixel, &fractol->size_line, &fractol->endian);
 }
