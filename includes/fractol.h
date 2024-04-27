@@ -5,7 +5,8 @@
 # include <fcntl.h>
 # include <stdio.h>
 # include <math.h>
-# include "../libft/libft.h"
+# include "libft/libft.h"
+# include "minilibx/mlx.h"
 
 # define SIZE 700
 # define THREAD_WIDTH 7
@@ -30,14 +31,10 @@ typedef struct s_data {
   void  *mlx;
   void  *window;
   void  *image;
-  char  *addr;
+  void  *addr;
   int bits_per_pixel;
   int size_line;
   int endian;
-  unsigned char r;
-  unsigned char g;
-  unsigned char b;
-  unsigned char t;
   int color;
   int x;
   int y;
@@ -54,7 +51,7 @@ typedef struct s_data {
 }t_data;
 
 // main.c
-int draw_fractol(t_data *fractol, char **argv);
+int draw_fractol(t_data *fractol, char *argv);
 
 // utils.c
 void  put_color_to_pixel(t_data *fractol, int x, int y, int color);
