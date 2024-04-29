@@ -2,37 +2,38 @@ NAME = fractol
 CC = cc
 CFLAGS = -Wall -Wextra -Werror
 
-MAIN = srcs/main.c
-SRCS = srcs/draw.c \
-		srcs/init.c \
-		srcs/julia.c \
-		srcs/mandelbrot.c \
-		srcs/mouse_keys.c \
-		srcs/utils.c \
-		srcs/main.c
-OBJS = $(SRCS:.c=.o)
-OBJ_DIR = obj
-LIBFT_PATH = includes/libft
-LIBFT = includes/libft/libft.a
-MLX_PATH = includes/minilibx
+MAIN = main.c
+SRCS = srcs/init.c\
+		srcs/utils.c\
+		srcs/mouse_keys.c\
+		srcs/draw.c\
+		srcs/mandelbrot.c\
+		srcs/julia.c
+
+LIBFT_PATH = include/libft
+LIBFT = include/libft/libft.a
+MLX_PATH = lib/minilibx
 MLX_FLAGS = -L$(MLX_PATH)
 MLX_COM = -Lmlx -lmlx -framework OpenGL -framework AppKit
-MLX = includes/minilibx/libmlx.a
+MLX = lib/minilibx/libmlx.a
 
 all: $(NAME)
 
-$(NAME): $(MAIN) $(OBJS)
-	@make -C $(LIBFT_PATH)
-	@make -C $(MLX_PATH)
-	@$(CC) $(CFLAGS) $(MLX_FLAGS) $(LIBFT) $(MLX_COM) $(MLX) $^ -o $@
+%.o: %.c
+	$(CC) $(CFLAGS) -Imlx -I$(LIBFT_PATH) -c $< -o $@
+
+$(NAME): $(MAIN)
+	$(CC) $(MAIN) $(SRCS) $(LIBFT) -Lmlx -lmlx -framework OpenGL -framework AppKit -o $(NAME)
+
+#$(NAME): $(MAIN)
+#	$(CC) $(MAIN) -o $@ $^ $(SRCS) $(LIBFT_PATH) $(MLX_COM) -o $(NAME)
+
 
 clean:
-	@make -C $(LIBFT_PATH) clean
 	@make -C $(MLX_PATH) clean
 	@rm -f $(OBJS)
 
 fclean: clean
-	@make -C $(LIBFT_PATH) fclean
 	@rm -f $(NAME)
 
 re: fclean all
