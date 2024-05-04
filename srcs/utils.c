@@ -1,4 +1,16 @@
-# include "../includes/fractol.h"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   utils.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: skondo <skondo@student.42tokyo.jp>         +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/04/29 17:48:34 by skondo            #+#    #+#             */
+/*   Updated: 2024/04/29 18:11:58 by skondo           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+# include "../include/fractol.h"
 
 void  put_color_to_pixel(t_data *fractol, int x, int y, int color)
 {

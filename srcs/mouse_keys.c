@@ -1,5 +1,16 @@
-# include "../includes/fractol.h"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   mouse_keys.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: skondo <skondo@student.42tokyo.jp>         +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/04/29 17:27:35 by skondo            #+#    #+#             */
+/*   Updated: 2024/05/04 14:02:57 by skondo           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
+# include "../include/fractol.h"
 
 void  handle_zoom(t_data *fractol, int x, int y, int zoom)
 {
@@ -28,7 +39,8 @@ void  random_julia(double *c_r, double *c_i)
   *c_i = generate_constant();
 }
 
-int handole_key(int code, t_data *fractol)
+
+int handle_key(int code, t_data *fractol)
 {
   if (code == ESC)
     exit(1);
@@ -47,10 +59,11 @@ int handole_key(int code, t_data *fractol)
   else if (code == J)
     random_julia(&fractol->c_r, &fractol->c_i);
   else if (code == P || code == M)
-    change_iterations(fractol, code);
+    change_iteration(fractol, code);
   draw_fractol(fractol, fractol->name);
   return (0);
 }
+
 
 int handle_mouse(int code, int x, int y, t_data *fractol)
 {
