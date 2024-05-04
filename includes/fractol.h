@@ -1,10 +1,18 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   fractol.h                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: skondo <skondo@student.42tokyo.jp>         +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/04/29 16:37:12 by skondo            #+#    #+#             */
+/*   Updated: 2024/05/04 12:58:55 by skondo           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef FRACTOL_H
 # define FRACTOL_H
 
-# include <unistd.h>
-# include <fcntl.h>
-# include <stdio.h>
-# include <math.h>
 # include "libft/libft.h"
 # include "minilibx/mlx.h"
 
@@ -44,7 +52,6 @@ typedef struct s_data {
   double  c_i;
   double  x_offset;
   double  y_offset;
-  bool  mandelbrot;
   char  *name;
   double  zoom;
   int iterations;
@@ -70,12 +77,12 @@ void  calculate_mandelbrot(t_data *fractol);
 void  calculate_julia(t_data  *fractol);
 
 // mouse_keys.c
-void  handle_zoom(t_data *fractol, int x, int y, int zoom);
-int handole_key(int code, t_data *fractol);
+void handle_zoom(t_data *fractol, int x, int y, int zoom);
+int handle_key(int code, t_data *fractol);
 int handle_mouse(int code, int x, int y, t_data *fractol);
 
 // draw.c
 void  draw_mandelbrot(t_data *fractol);
-void  *draw_julia(t_data *fractol);
+void  draw_julia(t_data *fractol);
 
 #endif
